@@ -1,0 +1,325 @@
+{\rtf1\ansi\ansicpg950\cocoartf2865
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!-- \uc0\u23384 \u27284 \u28858  quiz_prototype.html\u65292 \u30452 \u25509 \u22312 \u28687 \u35261 \u22120 \u25171 \u38283  -->\
+<!doctype html>\
+<html lang="zh-Hant">\
+<head>\
+  <meta charset="utf-8" />\
+  <meta name="viewport" content="width=device-width,initial-scale=1" />\
+  <title>\uc0\u20809 \u26126 \u20043 \u36335  \'97 \u20843 \u27491 \u36947 \u28204 \u39511 \u65288 \u20114 \u21205 \u21407 \u22411 \u65289 </title>\
+  <style>\
+    :root\{\
+      --bg1:#f5effa; --bg2:#fff6fb;\
+      --accent:#b88ef8; --accent2:#e9dafd;\
+      --card:#ffffff; --muted:#6f6076; --text:#2d2230;\
+    \}\
+    *\{box-sizing:border-box\}\
+    body\{margin:0;font-family:system-ui,-apple-system,"Noto Sans TC",Roboto,Arial;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);-webkit-font-smoothing:antialiased\}\
+    .wrap\{max-width:980px;margin:28px auto;padding:20px\}\
+    header\{display:flex;align-items:center;gap:14px\}\
+    .logo\{width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,var(--accent),#8a6be3);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:0 8px 30px rgba(138,107,227,0.12)\}\
+    h1\{font-size:20px;margin:0\}\
+    .lead\{color:var(--muted);margin-top:6px;font-size:14px\}\
+    .card\{background:var(--card);border-radius:16px;padding:22px;margin-top:18px;box-shadow:0 10px 30px rgba(25,18,38,0.06)\}\
+    .progressBar\{height:12px;background:linear-gradient(90deg,var(--accent2),#fff);border-radius:999px;overflow:hidden;margin-bottom:18px\}\
+    .progressFill\{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#ffd7ff);transition:width .45s ease;border-radius:999px\}\
+    .question\{font-weight:700;margin-bottom:12px;font-size:18px\}\
+    .options\{display:grid;gap:12px\}\
+    .opt\{padding:12px;border-radius:12px;border:1px solid #f0e9fa;background:linear-gradient(180deg,#fff,#fcf6ff);cursor:pointer;transition:transform .12s,box-shadow .12s\}\
+    .opt:hover\{transform:translateY(-4px);box-shadow:0 10px 30px rgba(138,107,227,0.08)\}\
+    .controls\{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:18px\}\
+    button\{background:var(--accent);color:white;border:0;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer\}\
+    button.secondary\{background:#fff;color:var(--accent);border:1px solid var(--accent)\}\
+    .small\{font-size:13px;color:var(--muted)\}\
+    .result-grid\{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start\}\
+    .card-illustration\{height:180px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfaff);display:flex;align-items:center;justify-content:center;margin-bottom:12px;box-shadow:inset 0 -20px 40px rgba(138,107,227,0.03)\}\
+    .meta\{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px\}\
+    .chip\{background:var(--accent2);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)\}\
+    /* modal */\
+    .modal-back\{position:fixed;inset:0;background:rgba(10,6,12,0.4);display:flex;align-items:center;justify-content:center;z-index:50\}\
+    .modal\{background:var(--card);border-radius:14px;padding:18px;max-width:520px;width:92%;box-shadow:0 12px 40px rgba(20,12,35,0.18)\}\
+    /* responsive */\
+    @media (max-width:820px)\{\
+      .result-grid\{grid-template-columns:1fr\}\
+    \}\
+    @media (max-width:520px)\{\
+      .wrap\{padding:12px\}\
+      .card\{padding:16px\}\
+    \}\
+  </style>\
+</head>\
+<body>\
+  <div class="wrap">\
+    <header>\
+      <div class="logo">\uc0\u40575 \u20809 </div>\
+      <div>\
+        <h1>\uc0\u20809 \u26126 \u20043 \u36335  \'97 \u20843 \u27491 \u36947 \u28204 \u39511 \u65288 \u20114 \u21205 \u21407 \u22411 \u65289 </h1>\
+        <div class="lead">\uc0\u30001 \u20841 \u38587 IP\u65288 \u21521 \u21069 \u26377 \u40575 \u12289 \u20809 \u26126 \u22312 \u26395 \u65289 \u24118 \u20320 \u25506 \u32034 \u30070 \u19979 \u26368 \u30456 \u25033 \u30340 \u20462 \u34892 \u26041 \u21521 \u12290 </div>\
+      </div>\
+    </header>\
+\
+    <main id="app" class="card" role="main" aria-live="polite">\
+      <!-- \uc0\u21205 \u24907 \u20839 \u23481  -->\
+    </main>\
+\
+    <div style="text-align:center;margin-top:12px;font-size:13px;color:var(--muted)">\
+      \uc0\u20358 \u28304 \u25552 \u31034 \u65306 \u25277 \u31844 \u35486 \u37636 \u21487 \u25505 \u29992 \u26143 \u38642 \u22823 \u24107 \u12298 \u20315 \u20809 \u33756 \u26681 \u35674 \u12299  \'97 \u20320 \u24050 \u25552 \u20379 \u21443 \u32771 \u36899 \u32080 \u65292 \u21487 \u20381 \u29256 \u27402 \u35215 \u31684 \u25918 \u20837 \u21407 \u25991 \u12290 \
+    </div>\
+  </div>\
+\
+<script>\
+/* ========== \uc0\u38988 \u24235 \u65288 \u21487 \u25913 \u28858 \u22806 \u37096  JSON\u65289  ========== */\
+const questions = [\
+  \{ id:1, q:"\uc0\u30070 \u36935 \u21040 \u22256 \u38627 \u26178 \u65292 \u20320 \u36890 \u24120 \u26371 \u24590 \u40636 \u20570 \u65311 ", opts:[\{t:"\u20998 \u26512 \u21407 \u22240 \u12289 \u24819 \u28165 \u26970 \u20877 \u34892 \u21205 ",m:"\u27491 \u35211 "\},\{t:"\u20445 \u25345 \u21892 \u24565 \u20006 \u39636 \u35538 \u20182 \u20154 ",m:"\u27491 \u24605 \u24799 "\},\{t:"\u25214 \u26379 \u21451 \u32842 \u32842 \u12289 \u23563 \u27714 \u25903 \u25345 ",m:"\u27491 \u35486 "\}] \},\
+  \{ id:2, q:"\uc0\u20320 \u35258 \u24471 \u12300 \u35498 \u30495 \u35441 \u12301 \u33287 \u12300 \u35731 \u20154 \u38283 \u24515 \u12301 \u22914 \u20309 \u21462 \u25448 \u65311 ", opts:[\{t:"\u20197 \u35488 \u23526 \u28858 \u26412 \u65288 \u20294 \u24118 \u21892 \u24847 \u65289 ",m:"\u27491 \u35211 "\},\{t:"\u24819 \u36774 \u27861 \u20841 \u32773 \u20860 \u39015 ",m:"\u27491 \u35486 "\},\{t:"\u20778 \u20808 \u21892 \u24565 \u65292 \u28187 \u23569 \u20663 \u23475 ",m:"\u27491 \u24605 \u24799 "\}] \},\
+  \{ id:3, q:"\uc0\u24037 \u20316 \u25110 \u23416 \u32722 \u26178 \u20320 \u26368 \u22312 \u24847 \u30340 \u26159 \u65306 ", opts:[\{t:"\u26159 \u21542 \u33021 \u23526 \u38555 \u24171 \u21161 \u20182 \u20154 ",m:"\u27491 \u26989 "\},\{t:"\u26159 \u21542 \u31526 \u21512 \u25105 \u20729 \u20540 \u33287 \u20449 \u24565 ",m:"\u27491 \u21629 "\},\{t:"\u26159 \u21542 \u33021 \u25345 \u32396 \u25104 \u38263 ",m:"\u27491 \u31934 \u36914 "\}] \},\
+  \{ id:4, q:"\uc0\u28966 \u24942 \u26178 \u20320 \u36890 \u24120 \u26371 \u65306 ", opts:[\{t:"\u38748 \u22352 \u12289 \u28145 \u21628 \u21560 \u35731 \u24515 \u27785 \u19979 \u20358 ",m:"\u27491 \u23450 "\},\{t:"\u23531 \u19979 \u24863 \u21463 \u65292 \u35258 \u23519 \u30070 \u19979 ",m:"\u27491 \u24565 "\},\{t:"\u25214 \u20154 \u35527 \u35527 \u65292 \u20132 \u25563 \u30475 \u27861 ",m:"\u27491 \u35486 "\}] \},\
+  \{ id:5, q:"\uc0\u20320 \u22914 \u20309 \u30475 \u24453 \u12300 \u21162 \u21147 \u12301 \u65311 ", opts:[\{t:"\u19981 \u26039 \u20462 \u27491 \u12289 \u26085 \u30410 \u31934 \u36914 ",m:"\u27491 \u31934 \u36914 "\},\{t:"\u25226 \u25569 \u30070 \u19979 \u65292 \u29992 \u24515 \u36942 \u29983 \u27963 ",m:"\u27491 \u24565 "\},\{t:"\u22533 \u23432 \u21407 \u21063 \u65292 \u19981 \u36629 \u26131 \u21205 \u25622 ",m:"\u27491 \u23450 "\}] \},\
+  \{ id:6, q:"\uc0\u20320 \u24076 \u26395 \u21029 \u20154 \u22914 \u20309 \u24418 \u23481 \u20320 \u65311 ", opts:[\{t:"\u29702 \u24615 \u28165 \u26126 \u12289 \u26377 \u27934 \u23519 ",m:"\u27491 \u35211 "\},\{t:"\u28331 \u26262 \u12289 \u26377 \u21516 \u29702 \u24515 ",m:"\u27491 \u24605 \u24799 "\},\{t:"\u26377 \u34892 \u21205 \u21147 \u12289 \u21487 \u38752 ",m:"\u27491 \u26989 "\}] \},\
+  \{ id:7, q:"\uc0\u38754 \u23565 \u20729 \u20540 \u34909 \u31361 \u26178 \u65292 \u20320 \u26371 \u65306 ", opts:[\{t:"\u20778 \u20808 \u23565 \u20182 \u20154 \u26377 \u30410 \u30340 \u36984 \u25799 ",m:"\u27491 \u24605 \u24799 "\},\{t:"\u20445 \u25345 \u20839 \u24515 \u24179 \u34913 \u33287 \u31337 \u23450 ",m:"\u27491 \u23450 "\},\{t:"\u20381 \u25818 \u22240 \u26524 \u33287 \u20107 \u23526 \u21028 \u26039 ",m:"\u27491 \u35211 "\}] \},\
+  \{ id:8, q:"\uc0\u20462 \u34892 \u23565 \u20320 \u26368 \u20687 \u26159 \u65306 ", opts:[\{t:"\u35469 \u35672 \u33258 \u24049 \u33287 \u30495 \u29702 ",m:"\u27491 \u35211 "\},\{t:"\u35731 \u26085 \u24120 \u34892 \u28858 \u26356 \u32020 \u28136 ",m:"\u27491 \u26989 "\},\{t:"\u20445 \u25345 \u20839 \u24515 \u23433 \u23450 \u12289 \u38748 \u24515 ",m:"\u27491 \u23450 "\}] \}\
+];\
+\
+const resultsMeta = \{\
+  "\uc0\u27491 \u35211 ": \{ title:"\u27491 \u35211  \'97 \u27934 \u23519 \u20043 \u20809 ", desc:"\u20320 \u25797 \u38263 \u24478 \u20840 \u23616 \u30475 \u21839 \u38988 \u65292 \u29702 \u35299 \u22240 \u26524 \u33287 \u30495 \u30456 \u12290 ", role:"\u20809 \u26126 ", blessing:"\u20320 \u30340 \u30524 \u20809 \u33021 \u30475 \u35211 \u20107 \u29289 \u30340 \u26412 \u36074 \u65292 \u20809 \u22312 \u20320 \u24515 \u20013 \u24050 \u28982 \u26126 \u20142 \u12290 " \},\
+  "\uc0\u27491 \u24605 \u24799 ": \{ title:"\u27491 \u24605 \u24799  \'97 \u21892 \u24565 \u20043 \u28304 ", desc:"\u20320 \u20197 \u24904 \u24754 \u28858 \u20986 \u30332 \u65292 \u39000 \u28858 \u20182 \u20154 \u33879 \u24819 \u12290 ", role:"\u40575 ", blessing:"\u21892 \u30340 \u24605 \u32771 \u65292 \u26159 \u24515 \u38728 \u26368 \u28145 \u30340 \u31150 \u29289 \u12290 \u39000 \u20320 \u30340 \u24565 \u38957 \u28331 \u26262 \u20182 \u20154 \u12290 " \},\
+  "\uc0\u27491 \u35486 ": \{ title:"\u27491 \u35486  \'97 \u35328 \u35486 \u30340 \u27211 \u27153 ", desc:"\u20320 \u25026 \u24471 \u35328 \u35486 \u30340 \u21147 \u37327 \u65292 \u25797 \u38263 \u20197 \u35328 \u35486 \u24118 \u32102 \u20154 \u23433 \u24944 \u12290 ", role:"\u20809 \u26126 ", blessing:"\u19968 \u35328 \u28331 \u26580 \u65292 \u33836 \u29289 \u30342 \u21644 \u12290 \u39000 \u20320 \u30340 \u35441 \u35486 \u25104 \u28858 \u20809 \u12290 " \},\
+  "\uc0\u27491 \u26989 ": \{ title:"\u27491 \u26989  \'97 \u34892 \u21205 \u30340 \u33139 \u21360 ", desc:"\u20320 \u37325 \u35222 \u23526 \u38555 \u34892 \u21205 \u65292 \u39000 \u29992 \u38617 \u25163 \u25913 \u21892 \u19990 \u30028 \u12290 ", role:"\u40575 ", blessing:"\u20320 \u30340 \u19968 \u27493 \u27493 \u21162 \u21147 \u65292 \u26159 \u36890 \u24448 \u20809 \u30340 \u33139 \u21360 \u12290 " \},\
+  "\uc0\u27491 \u21629 ": \{ title:"\u27491 \u21629  \'97 \u28165 \u28136 \u29983 \u27963 ", desc:"\u20320 \u36861 \u27714 \u33287 \u20729 \u20540 \u19968 \u33268 \u30340 \u29983 \u27963 \u65292 \u35488 \u23526 \u36367 \u23526 \u12290 ", role:"\u40575 ", blessing:"\u28165 \u28136 \u30340 \u29983 \u27963 \u65292 \u26159 \u30495 \u24515 \u30340 \u20809 \u12290 " \},\
+  "\uc0\u27491 \u31934 \u36914 ": \{ title:"\u27491 \u31934 \u36914  \'97 \u22894 \u36914 \u20043 \u28779 ", desc:"\u20320 \u19981 \u24597 \u25387 \u25240 \u65292 \u25345 \u32396 \u21521 \u21069 \u65292 \u29105 \u24773 \u22533 \u23450 \u12290 ", role:"\u20809 \u26126 ", blessing:"\u31934 \u36914 \u26159 \u35731 \u22818 \u24819 \u30332 \u20809 \u30340 \u29123 \u26009 \u12290 " \},\
+  "\uc0\u27491 \u24565 ": \{ title:"\u27491 \u24565  \'97 \u30070 \u19979 \u30340 \u35258 \u23519 ", desc:"\u20320 \u33021 \u35258 \u23519 \u30070 \u19979 \u65292 \u22238 \u21040 \u24179 \u38748 \u33287 \u28165 \u26126 \u12290 ", role:"\u40575 ", blessing:"\u30070 \u19979 \u21363 \u20809 \u65292 \u35258 \u30693 \u21363 \u26126 \u12290 " \},\
+  "\uc0\u27491 \u23450 ": \{ title:"\u27491 \u23450  \'97 \u24515 \u30340 \u23433 \u27490 ", desc:"\u20320 \u20445 \u26377 \u20839 \u22312 \u30340 \u23433 \u23450 \u33287 \u27784 \u24605 \u30340 \u21147 \u37327 \u12290 ", role:"\u20809 \u26126 ", blessing:"\u24515 \u22914 \u27490 \u27700 \u65292 \u20809 \u24433 \u33258 \u29694 \u12290 " \}\
+\};\
+\
+/* \uc0\u20839 \u24314 \u65306 \u20315 \u20809 \u33756 \u26681 \u35674 \u31684 \u20363 \u35486 \u37636 \u65288 \u35531 \u20381 \u29256 \u27402 \u26367 \u25563 \u28858 \u20320 \u35201 \u39023 \u31034 \u30340 \u21407 \u25991 \u65289  */\
+const riceQuotes = [\
+  "\uc0\u24525 \u26159 \u19968 \u31278 \u21147 \u37327 \u65292 \u36864 \u26159 \u19968 \u31278 \u26234 \u24935 \u12290 ",\
+  "\uc0\u35498 \u22909 \u35441 \u12289 \u20570 \u22909 \u20107 \u12289 \u23384 \u22909 \u24515 \u12290 ",\
+  "\uc0\u25345 \u25106 \u26159 \u20462 \u34892 \u30340 \u22522 \u30990 \u65292 \u35488 \u20449 \u26159 \u29983 \u27963 \u30340 \u20809 \u12290 ",\
+  "\uc0\u19981 \u24597 \u24930 \u65292 \u21482 \u24597 \u31449 \u65307 \u27599 \u22825 \u19968 \u40670 \u23567 \u36914 \u27493 \u12290 ",\
+  "\uc0\u33287 \u20154 \u28858 \u21892 \u65292 \u33258 \u24049 \u24471 \u31119 \u65307 \u26045 \u27604 \u21463 \u26356 \u26377 \u31119 \u12290 ",\
+  "\uc0\u20961 \u20107 \u22810 \u21453 \u30465 \u65292 \u23569 \u22475 \u24616 \u65292 \u24515 \u33258 \u23433 \u23527 \u12290 ",\
+  "\uc0\u24515 \u23384 \u24904 \u24754 \u65292 \u35328 \u34892 \u33258 \u28982 \u28331 \u26580 \u12290 ",\
+  "\uc0\u20445 \u25345 \u35258 \u23519 \u65292 \u30070 \u19979 \u21363 \u26159 \u26368 \u22909 \u30340 \u20462 \u34892 \u12290 "\
+];\
+\
+/* ========== \uc0\u29376 \u24907 \u33287 \u21021 \u22987 \u21270  ========== */\
+let state = \{ idx:0, answers:[], scores:\{\} \};\
+function resetScores()\{ for(const k in resultsMeta) state.scores[k]=0; \}\
+resetScores();\
+\
+/* ====== \uc0\u28210 \u26579 \u27169 \u32068  ====== */\
+const app = document.getElementById('app');\
+\
+function renderStart()\{\
+  app.innerHTML = `\
+    <div style="text-align:center;padding:18px">\
+      <div style="font-size:22px;font-weight:800;margin-bottom:8px">\uc0\u21521 \u21069 \u26377 \u40575 \u65292 \u20809 \u26126 \u22312 \u26395 </div>\
+      <div class="small" style="margin-bottom:12px">\'97 \uc0\u36879 \u36942  8 \u38988 \u31777 \u30701 \u36984 \u25799 \u65292 \u30332 \u29694 \u20320 \u26368 \u30456 \u25033 \u30340 \u20843 \u27491 \u36947  \'97</div>\
+      <div class="card-illustration" style="height:220px;margin:14px 0">\
+        <div style="text-align:center">\
+          <div style="font-size:36px">\uc0\u55358 \u56716  \u10024 </div>\
+          <div class="small" style="margin-top:10px">\uc0\u40575 \u27493 \u36629 \u34892 \u65292 \u20809 \u26126 \u22312 \u26395  \'97 \u27489 \u36814 \u36367 \u19978 \u20809 \u26126 \u20043 \u36335 </div>\
+        </div>\
+      </div>\
+      <div style="display:flex;gap:10px;justify-content:center">\
+        <button id="startBtn">\uc0\u38283 \u22987 \u28204 \u39511 </button>\
+        <button id="how" class="secondary">\uc0\u28204 \u39511 \u35498 \u26126 </button>\
+      </div>\
+    </div>\
+  `;\
+  document.getElementById('startBtn').onclick = ()=>\{ state.idx=0; state.answers=[]; resetScores(); renderQuestion(); \};\
+  document.getElementById('how').onclick = ()=> alert("\uc0\u20849 8\u38988 \u65292 \u27599 \u38988 \u36984 \u19968 \u20491 \u26368 \u36028 \u36817 \u20320 \u30340 \u36984 \u38917 \u12290 \u31995 \u32113 \u26371 \u32113 \u35336 \u20320 \u23565 \u21738 \u19968 \u38917 \u20843 \u27491 \u36947 \u26368 \u30456 \u25033 \u65292 \u23436 \u25104 \u24460 \u21487 \u29983 \u25104 \u31069 \u31119 \u21345 \u25110 \u25277 \u19968 \u21477 \u33756 \u26681 \u35674 \u26234 \u24935 \u12290 ");\
+\}\
+\
+function renderQuestion()\{\
+  const q = questions[state.idx];\
+  const progress = Math.round((state.idx)/questions.length*100);\
+  app.innerHTML = `\
+    <div class="progressBar"><div class="progressFill" style="width:$\{progress\}%"></div></div>\
+    <div class="question">\uc0\u31532  $\{state.idx+1\} \u38988  / $\{questions.length\}\u65306  $\{q.q\}</div>\
+    <div class="options" id="opts"></div>\
+    <div class="controls">\
+      <div class="small">\uc0\u36984 \u25799 \u24460 \u25353 \u19979 \u19968 \u38988 \u65288 \u20320 \u20063 \u21487 \u22238 \u21040 \u19978 \u19968 \u27493 \u20462 \u25913 \u65289 </div>\
+      <div>\
+        <button id="prev" class="secondary" $\{state.idx===0? 'disabled' : ''\}>\uc0\u19978 \u19968 \u27493 </button>\
+        <button id="skip" class="secondary">\uc0\u36339 \u36942 </button>\
+      </div>\
+    </div>\
+  `;\
+  const optsEl = document.getElementById('opts');\
+  q.opts.forEach((o,i)=>\{\
+    const el = document.createElement('div');\
+    el.className = 'opt';\
+    el.tabIndex = 0;\
+    el.innerHTML = `<div style="font-weight:700">$\{String.fromCharCode(65+i)\}. $\{o.t\}</div><div class="small" style="margin-top:6px">\uc0\u65288 \u23565 \u25033 \u65306 $\{o.m\}\u65289 </div>`;\
+    el.onclick = ()=> selectOption(o.m);\
+    el.onkeypress = (e)=>\{ if(e.key==='Enter') selectOption(o.m) \};\
+    optsEl.appendChild(el);\
+  \});\
+\
+  document.getElementById('prev').onclick = ()=>\{\
+    if(state.idx>0)\{\
+      state.idx--; state.answers.pop(); recalcScores(); renderQuestion();\
+    \}\
+  \};\
+  document.getElementById('skip').onclick = ()=>\{\
+    state.answers.push(null); state.idx++;\
+    if(state.idx >= questions.length) showResult(); else renderQuestion();\
+  \};\
+\}\
+\
+function selectOption(mapping)\{\
+  state.answers.push(mapping);\
+  state.scores[mapping] = (state.scores[mapping]||0) + 1;\
+  state.idx++;\
+  if(state.idx >= questions.length) showResult(); else renderQuestion();\
+\}\
+\
+function recalcScores()\{\
+  resetScores();\
+  state.answers.forEach(a=>\{ if(a) state.scores[a] = (state.scores[a]||0)+1; \});\
+\}\
+\
+/* ========== \uc0\u32080 \u26524 \u39023 \u31034  ========== */\
+function showResult()\{\
+  // \uc0\u35336 \u31639 \u26368 \u39640 \u20998 \
+  let max = -1; for(const k in state.scores) if(state.scores[k] > max) max = state.scores[k];\
+  let winners = [];\
+  for(const k in state.scores) if(state.scores[k] === max && max>0) winners.push(k);\
+  if(winners.length===0) winners = ["\uc0\u27491 \u24565 "]; // default\
+  const primary = winners[0];\
+  const meta = resultsMeta[primary];\
+\
+  app.innerHTML = `\
+    <div class="result-grid">\
+      <div>\
+        <div class="card-illustration">\
+          <div style="text-align:center">\
+            <div style="font-size:46px">$\{meta.role==='\uc0\u40575 '?'\u55358 \u56716 ':'\u10024 '\}</div>\
+            <div style="font-weight:800;margin-top:8px">$\{meta.title\}</div>\
+            <div class="small" style="margin-top:8px">$\{meta.desc\}</div>\
+          </div>\
+        </div>\
+\
+        <div style="background:linear-gradient(180deg,#fff,#fbfaff);padding:14px;border-radius:12px">\
+          <div style="font-weight:800;font-size:18px">$\{meta.blessing\}</div>\
+          <div class="meta" style="margin-top:10px">\
+            <div class="chip">\uc0\u35282 \u33394 \u65306 $\{meta.role\}</div>\
+            <div class="chip">\uc0\u20006 \u21015 \u65306 $\{winners.join('\u12289 ')\}</div>\
+            <div class="chip">\uc0\u25688 \u35201 \u65306 $\{formatScoreSummary()\}</div>\
+          </div>\
+        </div>\
+\
+        <div style="margin-top:12px;display:flex;gap:10px">\
+          <button id="genCard">\uc0\u29983 \u25104 \u31069 \u31119 \u21345 \u65288 \u19979 \u36617  PNG\u65289 </button>\
+          <button id="drawQuote" class="secondary">\uc0\u25277 \u19968 \u21477 \u33756 \u26681 \u35674  \u55356 \u57151 </button>\
+          <button id="again" class="secondary">\uc0\u20877 \u20570 \u19968 \u27425 </button>\
+        </div>\
+      </div>\
+\
+      <div>\
+        <div style="background:linear-gradient(180deg,#fff,#fbfaff);padding:12px;border-radius:12px">\
+          <div style="font-weight:800;margin-bottom:8px">\uc0\u28145 \u20837 \u24314 \u35696 </div>\
+          <div class="small">\uc0\u23567 \u24314 \u35696 \u65306 \u12300 $\{meta.title\}\u12301 \u21487 \u22039 \u35430 \u27599 \u26085  3 \u20998 \u37912 \u35258 \u23519 \u25110 \u19968 \u20214 \u23567 \u21892 \u34892 \u65292 \u23559 \u26234 \u24935 \u33853 \u23526 \u26044 \u26085 \u24120 \u12290 </div>\
+          <div style="height:10px"></div>\
+          <div style="margin-top:8px">\
+            <div style="font-weight:700;margin-bottom:6px">\uc0\u20998 \u20139 </div>\
+            <div class="small">\uc0\u19979 \u36617 \u31069 \u31119 \u21345 \u24460 \u21487 \u20998 \u20139 \u21040  IG \u38480 \u26178 \u21205 \u24907 \u25110 \u23384 \u27284 \u12290 </div>\
+          </div>\
+        </div>\
+      </div>\
+    </div>\
+  `;\
+\
+  document.getElementById('again').onclick = ()=> renderStart();\
+  document.getElementById('genCard').onclick = ()=> generateCard(primary, winners);\
+  document.getElementById('drawQuote').onclick = ()=> showQuoteModal(pickRandomQuote());\
+\}\
+\
+function formatScoreSummary()\{\
+  return Object.entries(state.scores).sort((a,b)=>b[1]-a[1]).slice(0,3).map(p=>`$\{p[0]\}:$\{p[1]\}`).join('\uc0\u65292 ');\
+\}\
+\
+/* ========== \uc0\u31069 \u31119 \u21345 \u65288 Canvas \u19979 \u36617 \u65289  ========== */\
+function generateCard(primary, winners)\{\
+  const meta = resultsMeta[primary] || resultsMeta['\uc0\u27491 \u24565 '];\
+  const w=1200, h=630;\
+  const c=document.createElement('canvas'); c.width=w; c.height=h;\
+  const ctx=c.getContext('2d');\
+\
+  // \uc0\u32972 \u26223 \
+  const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'#f6f1ff'); g.addColorStop(1,'#fff');\
+  ctx.fillStyle=g; ctx.fillRect(0,0,w,h);\
+\
+  // \uc0\u24038 \u33394 \u22602 \
+  ctx.fillStyle='#efe6ff'; ctx.fillRect(60,60,520,510);\
+\
+  // \uc0\u27161 \u38988 \
+  ctx.fillStyle='#3b2d3f'; ctx.font='bold 44px "Noto Sans", system-ui'; ctx.fillText('\uc0\u20809 \u26126 \u20043 \u36335  \'97 \u31069 \u31119 \u21345 ', 620,120);\
+\
+  // \uc0\u32080 \u26524 \
+  ctx.font='700 36px "Noto Sans"'; ctx.fillText(meta.title,620,200);\
+  ctx.font='600 24px "Noto Sans"'; wrapText(ctx, meta.blessing, 620,250,520,34);\
+\
+  // meta\
+  ctx.font='500 18px "Noto Sans"'; ctx.fillStyle='#6f5f76'; ctx.fillText('\uc0\u35282 \u33394 \u65306 '+meta.role, 620,380);\
+  ctx.fillText('\uc0\u20006 \u21015 \u65306 '+winners.join('\u12289 '), 620,410);\
+  ctx.fillText('\uc0\u30001 \u12300 \u21521 \u21069 \u26377 \u40575 \u65292 \u20809 \u26126 \u22312 \u26395 \u12301 \u29983 \u25104 ',620,470);\
+\
+  // \uc0\u25554 \u30059  emoji\
+  ctx.font='140px serif'; ctx.fillText(meta.role==='\uc0\u40575 '?'\u55358 \u56716 ':'\u10024 ', 200,350);\
+\
+  // \uc0\u26143 \u20809 \u40670 \u32180 \
+  for(let i=0;i<40;i++)\{ ctx.fillStyle=`rgba(200,160,255,$\{Math.random()*0.45\})`; ctx.beginPath(); ctx.arc(700+Math.random()*420,520+Math.random()*60*Math.sin(i), Math.random()*4+1,0,Math.PI*2); ctx.fill(); \}\
+\
+  // download\
+  const url=c.toDataURL('image/png'); const a=document.createElement('a'); a.href=url; a.download=`\uc0\u20809 \u26126 \u20043 \u36335 _$\{primary\}.png`; document.body.appendChild(a); a.click(); a.remove();\
+\}\
+\
+/* ========== \uc0\u25277 \u31844 \u65288 \u24392 \u31383 \u65289  ========== */\
+function pickRandomQuote()\{ return riceQuotes[Math.floor(Math.random()*riceQuotes.length)]; \}\
+\
+function showQuoteModal(quote)\{\
+  const modal = document.createElement('div'); modal.className='modal-back';\
+  modal.innerHTML = `\
+    <div class="modal" role="dialog" aria-modal="true">\
+      <div style="font-weight:800;font-size:18px;margin-bottom:8px">\uc0\u20315 \u20809 \u33756 \u26681 \u35674  \'97 \u19968 \u21477 \u24515 \u35486 </div>\
+      <div style="background:#fff;padding:12px;border-radius:8px;margin-bottom:10px">\
+        <div style="font-size:16px">$\{quote\}</div>\
+      </div>\
+      <div style="display:flex;gap:8px;justify-content:flex-end">\
+        <button id="saveQuote">\uc0\u25910 \u34255 </button>\
+        <button id="closeModal" class="secondary">\uc0\u38364 \u38281 </button>\
+      </div>\
+    </div>\
+  `;\
+  document.body.appendChild(modal);\
+  document.getElementById('closeModal').onclick = ()=> modal.remove();\
+  document.getElementById('saveQuote').onclick = ()=> \{ alert('\uc0\u24050 \u25910 \u34255 \u65288 \u31034 \u24847 \u65289  \'97 \u33509 \u35201 \u20786 \u23384 \u65292 \u21487 \u36899 \u32080 \u33267  Firebase \u25110  localStorage\u12290 '); modal.remove(); \};\
+\}\
+\
+/* ========== \uc0\u24037 \u20855 \u65306 Canvas \u25563 \u34892  ========== */\
+function wrapText(ctx,text,x,y,maxWidth,lineHeight)\{\
+  const words = text.split(' ');\
+  let line='';\
+  for(let n=0;n<words.length;n++)\{\
+    const test = line + words[n] + ' ';\
+    const m = ctx.measureText(test);\
+    if(m.width > maxWidth && n>0)\{ ctx.fillText(line,x,y); line = words[n] + ' '; y += lineHeight; \}\
+    else \{ line = test; \}\
+  \}\
+  ctx.fillText(line,x,y);\
+\}\
+\
+/* \uc0\u21855 \u21205  */\
+renderStart();\
+</script>\
+</body>\
+</html>\
+}
